@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESSS - Find School</title>
+    <link rel="icon" href="Essslogo (2).png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .head {
+            width: 100%;
+            height: 100px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .head img {
+            height: 70px;
+            width: 70px;
+            margin-right: 15px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #198dcb;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .nav {
+            background-color: #198dcb;
+            width: 100%;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .list {
+            display: flex;
+            gap: 25px;
+        }
+
+        .list a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .list a:hover {
+            color: #EEA200;
+        }
+
+        .fschool {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 28px;
+            color: #198dcb;
+        }
+
+        .search {
+            background-color: #fff;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .search label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .search select,
+        .search input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search select:focus,
+        .search input:focus {
+            border-color: #198dcb;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #198dcb;
+        }
+
+        .footer {
+            width: 100%;
+            height: 70px;
+            background-color: #198dcb;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .head {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .header p {
+                font-size: 12px;
+            }
+
+            .nav {
+                height: auto;
+                padding: 10px;
+            }
+
+            .list {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .search {
+                width: 90%;
+                margin: 20px auto;
+            }
+
+            .fschool {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .head img {
+                height: 50px;
+                width: 50px;
+            }
+
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .header p {
+                font-size: 10px;
+            }
+
+            .nav {
+                height: auto;
+                padding: 10px;
+            }
+
+            .list a {
+                font-size: 14px;
+            }
+
+            .fschool {
+                font-size: 20px;
+            }
+
+            .search {
+                padding: 15px;
+            }
+
+            .search label {
+                font-size: 14px;
+            }
+
+            .search select,
+            .search input {
+                font-size: 12px;
+            }
+
+            .btn {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">
+        <img src="esss.png">
+        <div class="header">
+            <h1>EduSite for Smart School </h1>
+            <p>(Smart School for Smart Society)</p>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="list">
+            <a href="index.php">Home</a>
+            <a href="find-school.html">Find School</a>
+            <a href="about-us.html">About Us</a>
+        </div>
+    </div>
+
+    <img src="src-bnr01.jpg" alt="" style="height: 200px;width: 100%;">
+    <h1 class="fschool">Find Your School</h1>
+
+    <div class="search">
+        <form action="search.php" method="POST">
+            <!-- District Dropdown -->
+            <div class="District">
+                <label for="inputDistrict">District</label>
+                <select class="form-control" id="inputDistrict" name="inputDistrict">
+                    <option value="SelectDistrict"> - - Select District - -</option>
+                    <option value="Ariyalur">Ariyalur</option>
+                    <option value="Chengalpattu">Chengalpattu</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                    <option value="Cuddalore">Cuddalore</option>
+                    <option value="Dharmapuri">Dharmapuri</option>
+                    <option value="Dindigul">Dindigul</option>
+                    <option value="Erode">Erode</option>
+                    <option value="Kallakurichi">Kallakurichi</option>
+                    <option value="Kancheepuram">Kancheepuram</option>
+                    <option value="Kanniyakumari">Kanniyakumari</option>
+                    <option value="Karur">Karur</option>
+                    <option value="Krishnagiri">Krishnagiri</option>
+                    <option value="Madurai">Madurai</option>
+                    <option value="Mayiladuthurai">Mayiladuthurai</option>
+                    <option value="Nagapattinam">Nagapattinam</option>
+                    <option value="Namakkal">Namakkal</option>
+                    <option value="Nilgiris">Nilgiris</option>
+                    <option value="Perambalur">Perambalur</option>
+                    <option value="Pudukkottai">Pudukkottai</option>
+                    <option value="Ramanathapuram">Ramanathapuram</option>
+                    <option value="Ranipet">Ranipet</option>
+                    <option value="Salem">Salem</option>
+                    <option value="Sivagangai">Sivagangai</option>
+                    <option value="Tenkasi">Tenkasi</option>
+                    <option value="Thanjavur">Thanjavur</option>
+                    <option value="Theni">Theni</option>
+                    <option value="Thoothukudi">Thoothukudi</option>
+                    <option value="Tiruchirappalli">Tiruchirappalli</option>
+                    <option value="Tirunelveli">Tirunelveli</option>
+                    <option value="Tirupathur">Tirupathur</option>
+                    <option value="Tiruppur">Tiruppur</option>
+                    <option value="Tiruvallur">Tiruvallur</option>
+                    <option value="Tiruvannamalai">Tiruvannamalai</option>
+                    <option value="Tiruvarur">Tiruvarur</option>
+                    <option value="Vellore">Vellore</option>
+                    <option value="Viluppuram">Viluppuram</option>
+                    <option value="Virudhunagar">Virudhunagar</option>
+                </select>
+            </div>
+
+            <!-- Block Dropdown -->
+            <div class="block">
+                <label for="inputBlock">Block</label>
+                <select class="form-control" id="inputBlock" name="inputBlock">
+                    <option value=""> - - Select Block - - </option>
+                </select>
+            </div>
+
+            <!-- School Type Dropdown -->
+            <div class="school-type">
+                <label for="smanagement">School Type</label>
+                <select class="form-control" id="smanaged" name="smanaged">
+                    <option value=""> - - Select School Type - - </option>
+                    <option value="Gov">Government School</option>
+                    <option value="Govaid">Government Aided School</option>
+                    <option value="Public">Private School</option>
+                </select>
+            </div>
+
+            <!-- Search Button -->
+            <button class="btn" type="submit" id="searchButton">Search</button>
+            <div id="results"></div>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <p>This site is designed, hosted, developed and maintained by
+                <br>EduSite For Smart School(ESSS)
+            </p>
+        </div>
+    </footer>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"></script>
+        <script>
+            const districtSelect = document.getElementById('inputDistrict');
+            const blockSelect = document.getElementById('inputBlock');
+            const searchButton = document.getElementById('searchButton');
+            const resultsDiv = document.getElementById('results');
+
+
+            var Ariyalur = ["T.Palur", "Sendurai", "Ariyalur", "Andimadam", "Jayankondam", "Thirumanur"];
+            var Chengalpattu = ["Thiruporur", "Kattankolathur", "Thirukalukundram", "St.Thomas Mount", "Acharapakkam", "Madurantagam", "Lathur", "Chithamur"];
+            var Chennai = ["Thiruvotriyur", "Anna Nagar", "Tondiarpet", "Royapuram Central", "Royapuram North", "Thiru Vi Ka Nagar", "Royapuram South", "Kodambakkam", "Teynampet", "Adyar"];
+            var Coimbatore = ["Coimbatore city", "Madukkarai", "Periyanaickan Palayam", "Perur", "Sarkar Samakkulam", "Thondamuthur", "Anaimalai", "Kinathukkadavu", "Pollachi north", "Pollachi south", "Valparai", "Annur", "Karamadai", "Sulthanpet", "Sulur"];
+            var Cuddalore = ["Cuddalore", "Annagrammam", "Panruti", "Kurinjipadi", "Virudhachalam", "Nallur", "Mangalore", "Kammapuram", "Srimushnam", "Parangipettai", "Bhuvanagiri", "Keerapalayam", "Kumaratchi", "Kattumannarkoil"];
+            var Dharmapuri = ["Dharmapuri", "Nallampalli", "Pennagaram", "Eriyur", "Palacode", "Karimangalam", "Kadathur", "Morappur", "Pappireddipatti", "Harur"];
+            var Dindigul = ["Athoor", "Batlagundu", "Dindigul - Rural", "Gujiliamparai", "Kodaikanal", "Natham", "Nilakottai", "Oddanchathram", "Palani - Rural", "Reddiyarchatram", "Sanarpatty", "Thoppampatty", "Vadamadurai", "Vedasandur", "Dindigul -Urban"];
+            var Erode = ["Ammapettai-Erode", "Anthiyur", "Bhavani", "Bhavani sagar", "Chennimalai", "Erode", "Gobi", "Kodumudi", "Modakurichi", "Nambiyur", "Perundurai", "Sathiyamangalam", "Thalavady", "Thuckanaicken Palayam"];
+            var Kallakurichi = ["Rishivanthiyam", "Thirukoilur", "Sankarapuram", "Kalrayan Hills", "Kallakurichi", "Chinnasalem", "Thiyagadurgam", "Ulundurpet", "Thirunavalur"];
+            var Kancheepuram = ["Kancheepuram", "Walajabad", "Uthiramerur", "Sriperumbudur", "Kundrathur"];
+            var Kanniyakumari = ["Thovalai", "Agastheeswaram", "Rajakkamangalam", "Kurunthancode", "Thuckalay", "Thiruvattar", "Melpuram", "Killiyoor", "Munchirai"];
+            var Karur = ["Karur", "Thanthoni", "Aravakurichi", "K.Paramathi", "Krishnarayapuram", "Kadavoor", "Kulithalai", "Thogaimalai"];
+            var Krishnagiri = ["Uthangarai", "Krishnagiri", "Kaveripatinam", "Bargur", "Veppanapalli", "Shoolagiri", "Hosur", "Kelamangalam", "Thally", "Mathur"];
+            var Madurai = ["Alanganallur", "Chellampatti", "Kallikudi", "T.kallupatti", "Kottampatti", "Madurai East", "Madurai West", "Melur", "Sedapatti", "Thirumangalam", "Thiruparamkundram", "Usilampatti", "T.vadipatti", "Madurai North", "Madurai South"];
+            var Mayiladuthurai = ["Mayiladudurai", "Sembanarkoil", "Kuthalam", "Sirkali", "kollidam"];
+            var Nagapattinam = ["Nagapattinam", "Thirumarugal", "Kelvelur", "Keezhaiyur", "Thalainayar", "Vedaranyam"];
+            var Namakkal = ["Namakkal", "Kollihills", "Mohanur", "Erumapatti", "Sendamangalam", "Puduchatram", "Rasipuram", "Vennandur", "Namagiripet", "Tiruchengode", "Pallipalayam", "Mallasamudram", "Elachipalayam", "Paramathi", "Kabilarmala"];
+            var Nilgiris = ["Udhagamandalam", "Coonoor", "Kotagiri", "Gudalur"];
+            var Perambalur = ["Veppur", "Veppanthattai", "Perambalur", "Alathur"];
+            var Pudukkottai = ["Kunnandarkoil", "Annavasal", "Viralimalai", "Gandarvakkottai", "Pudukkottai", "Thiruvarankulam", "Karambakkudi", "Thirumayam", "Ponnamaravathy", "Arimalam", "Aranthangi", "Manamelkudi", "Avudaiyarkoil"];
+            var Ramanathapuram = ["Thiruvadanai", "Rajasingamangalam", "Paramakudi", "Bogalur", "Nainarkoil", "Kamuthi", "Mudukulathur", "Kadaladi", "Ramanathapuram", "Thiruppullani", "Mandapam"];
+            var Ranipet = ["Arakkonam", "Kaveripakkam", "Nemili", "Sholingar", "Walaja West", "Walaja East", "Arcot", "Timiri"];
+            var Salem = ["Gangavalli", "Pethanaickenpalayam", "Kadayampatti", "Magundanchavadi", "Konganapuram", "Panamarathupatti", "Thalaivasal", "Veerapandi", "Salem-Rural", "Tharamangalam", "Nangavalli", "Edappadi", "Attur", "Ayothiyapattinam", "Kolathur", "Mecheri", "Omalur", "Sankari", "Valappadi", "Yercaud", "Salem-Urban"];
+            var Sivagangai = ["Sivagangai", "Kalayarkoil", "Manamadurai", "Thiruppuvanam", "Ilayangudi", "Devakottai", "Kannangudi", "Sakkottai", "Thiruppatur", "Singampunari", "S.Pudur", "Kallal"];
+            var Tenkasi = ["Alangulam", "Kadayam", "Kadayanallur", "Keelapavoor", "Kuruvikulam", "Melaneelithanallur", "Sankarankovil", "Shenkottai", "Tenkasi", "Vasudevanallur"];
+            var Thanjavur = ["Thanjavur(Urban)", "Thanjavur(Rural)", "Thiruvaiyar", "Budalur", "Orathanadu", "Thiruvonam", "Kumbakonam", "Papanasam", "Ammapettai-TNJ", "Thiruvidaimarudhur", "Thiruppanandal", "Pattukkottai", "Madukkur", "Peravurani", "Sethubavachatram"];
+            var Theni = ["Aundipatty", "Bodinayakanur", "Chinnamanur", "Cumbum", "Myladumparai", "Periyakulam", "Theni", "Uthamapalayam"];
+            var Thoothukudi = ["Thoothukudi Urban", "Karunkulam", "Srivaikundam", "Alwarthirunagar", "Thiruchenthur", "Udangudi", "Sathankulam", "Kovilpatti", "Kayathar", "Ottapidaram", "Vilathikulam", "Pudur", "Thoothukudi Rural"];
+            var Tiruchirappalli = ["Andhanallur", "Lalgudi", "Mannachanallur", "Manikandam", "Manapparai", "Marungapuri", "Musiri", "Pullambadi", "Trichy-Urban", "Trichy-West", "Thiruverumbur", "Thottiyam", "Thuraiyur", "Thathiengarpet", "Uppiliyapuram", "Vaiyampatti",];
+            var Tirunelveli = ["Ambasamudram", "Cheranmahadevi", "Kalakad", "Manur", "Pappakudi", "Nanguneri", "Palay-Rural", "Radhapuram", "Valliyoor", "Palay-Urban", "Tirunelveli Urban"];
+            var Tirupathur = ["Madhanur", "Alangayam", "Jolarpet", "Thirupattur", "Natrampalli", "Kandhili"];
+            var Tiruppur = ["Dharapuram", "Gangayam", "Gundadam", "Moolanur", "Uthukuli", "Vellackoil", "Kudimangalam", "Madathukulam", "Udumalaipattai", "Avinaci", "Palladam", "Pongalur", "Tiruppur South", "Tiruppur North"];
+            var Tiruvallur = ["Thiruvallur", "Poondi", "Kadambathur", "Ellapuram", "Poonamallee", "Minjur", "Sholavaram", "Gummidipoondi", "Villivakkam", "Puzhal", "Tiruttani", "Thiruvalangadu", "Pallipat", "R.K.Pet"];
+            var Tiruvannamalai = ["Vembakkam", "Cheyyar", "Anakkavur", "Peranamallur", "Vandavasi", "Thellar", "Arni", "West Arni", "Polur", "Kalasapakkam", "Chetpet", "Thurinjapuram", "Kilpennathur", "Tiruvannamalai", "Pudupalayam", "Chengam", "Thandrampet", "Jawadhu Hills"];
+            var Tiruvarur = ["Valangaiman", "Kudavasal", "Koradachery", "Nannilam", "Thiruvarur", "Mannargudi", "Needamangalam", "Kottur", "Thiruthuraipoondi", "Muthupettai"];
+            var Vellore = ["Katpadi", "Vellore Rural", "Vellore Urban", "Kaniyambadi", "Anaicut", "K.V.Kuppam", "Gudiyatham", "Pernambut"];
+            var Viluppuram = ["Melmalayanur", "Gingee", "Vallam", "Olakkur", "Mailam", "Marakkanam", "Vaanur", "Kanai", "Vikaravandi", "Koliyanur", "Kandamangalam", "Mugaiyur", "Thiruvennainallur"];
+            var Virudhunagar = ["Aruppukottai", "Virudhunagar", "Kariyapatti", "Thiruchuli", "Narikudi", "Rajapalayam", "Srivilliputhur", "Watrap", "Sivakasi", "Vembakottai", "Sattur"];
+
+
+
+            $("#inputDistrict").change(function () {
+                var DistrictSelected = $(this).val();
+                var optionsList;
+                var htmlString = "";
+
+                switch (DistrictSelected) {
+                    case "Ariyalur":
+                        optionsList = Ariyalur;
+                        break;
+                    case "Chengalpattu":
+                        optionsList = Chengalpattu;
+                        break;
+                    case "Chennai":
+                        optionsList = Chennai;
+                        break;
+                    case "Coimbatore":
+                        optionsList = Coimbatore;
+                        break;
+                    case "Cuddalore":
+                        optionsList = Cuddalore;
+                        break;
+                    case "Dharmapuri":
+                        optionsList = Dharmapuri;
+                        break;
+                    case "Dindigul":
+                        optionsList = Dindigul;
+                        break;
+                    case "Erode":
+                        optionsList = Erode;
+                        break;
+                    case "Kallakurichi":
+                        optionsList = Kallakurichi;
+                        break;
+                    case "Kancheepuram":
+                        optionsList = Kancheepuram;
+                        break;
+                    case "Kanniyakumari":
+                        optionsList = Kanniyakumari;
+                        break;
+                    case "Karur":
+                        optionsList = Karur;
+                        break;
+                    case "Krishnagiri":
+                        optionsList = Krishnagiri;
+                        break;
+                    case "Madurai":
+                        optionsList = Madurai;
+                        break;
+                    case "Mayiladuthurai":
+                        optionsList = Mayiladuthurai;
+                        break;
+                    case "Nagapattinam":
+                        optionsList = Nagapattinam;
+                        break;
+                    case "Namakkal":
+                        optionsList = Namakkal;
+                        break;
+                    case "Nilgiris":
+                        optionsList = Nilgiris;
+                        break;
+                    case "Perambalur":
+                        optionsList = Perambalur;
+                        break;
+                    case "Pudukkottai":
+                        optionsList = Pudukkottai;
+                        break;
+                    case "Ramanathapuram":
+                        optionsList = Ramanathapuram;
+                        break;
+                    case "Ranipet":
+                        optionsList = Ranipet;
+                        break;
+                    case "Salem":
+                        optionsList = Salem;
+                        break;
+                    case "Sivagangai":
+                        optionsList = Sivagangai;
+                        break;
+                    case "Tenkasi":
+                        optionsList = Tenkasi;
+                        break;
+                    case "Thanjavur":
+                        optionsList = Thanjavur;
+                        break;
+                    case "Theni":
+                        optionsList = Theni;
+                        break;
+                    case "Thoothukudi":
+                        optionsList = Thoothukudi;
+                        break;
+                    case "Tiruchirappalli":
+                        optionsList = Tiruchirappalli;
+                        break;
+                    case "Tirunelveli":
+                        optionsList = Tirunelveli;
+                        break;
+                    case "Tirupathur":
+                        optionsList = Tirupathur;
+                        break;
+                    case "Tiruppur":
+                        optionsList = Tiruppur;
+                        break;
+                    case "Tiruvallur":
+                        optionsList = Tiruvallur;
+                        break;
+                    case "Tiruvannamalai":
+                        optionsList = Tiruvannamalai;
+                        break;
+                    case "Tiruvarur":
+                        optionsList = Tiruvarur;
+                        break;
+                    case "Vellore":
+                        optionsList = Vellore;
+                        break;
+                    case "Viluppuram":
+                        optionsList = Viluppuram;
+                        break;
+                    case "Virudhunagar":
+                        optionsList = Virudhunagar;
+                        break;
+                }
+
+
+                for (var i = 0; i < optionsList.length; i++) {
+                    htmlString = htmlString + "<option value='" + optionsList[i] + "'>" + optionsList[i] + "</option>";
+                }
+                $("#inputBlock").html(htmlString);
+
+            });
+        </script>
+    
+</body>
+
+</html>
